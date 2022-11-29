@@ -172,7 +172,7 @@ return 0;
     1141:       48 89 75 e0             mov    QWORD PTR [rbp-0x20],rsi
     1145:       48 89 55 d8             mov    QWORD PTR [rbp-0x28],rdx
     1149:       89 4d d4                mov    DWORD PTR [rbp-0x2c],ecx
-    114c:       c7 45 fc 00 00 00 00    mov    DWORD PTR [rbp-0x4],0x0
+    114c:       c7 45 fc 00 00 00 00    mov    DWORD PTR [rbp-0x4],0x0  rbp-4 = i
     1153:       eb 50                   jmp    11a5 <vector_add+0x6c>
     1155:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
     1158:       48 98                   cdqe
