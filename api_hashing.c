@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-// this is really not effective cand casues hash collions very easily
+// this is really not effective and causes hash collions very easily, just learning for malware
 
 char api[] = "CreateThread";
 
