@@ -26,3 +26,62 @@ int main()
 	
 	
 }
+
+/*
+Compiled through godbolt explorer, no options, gcc 
+
+api:
+        .string "CreateThread"
+.LC0:
+        .string "%s: 0x00%x\n"
+hash_from_string:
+        push    rbp
+        mov     rbp, rsp
+        sub     rsp, 32
+        mov     QWORD PTR [rbp-24], rdi
+        mov     rax, QWORD PTR [rbp-24]
+        mov     rdi, rax
+        call    strlen
+        mov     DWORD PTR [rbp-12], eax
+        mov     DWORD PTR [rbp-4], 53
+        mov     DWORD PTR [rbp-8], 0
+        jmp     .L2
+.L3:
+        mov     eax, DWORD PTR [rbp-4]
+        imul    edx, eax, -1424952673
+        mov     eax, DWORD PTR [rbp-8]
+        movsx   rcx, eax
+        mov     rax, QWORD PTR [rbp-24]
+        add     rax, rcx
+        movzx   eax, BYTE PTR [rax]
+        movsx   eax, al
+        add     eax, edx
+        and     eax, 16777215
+        mov     edx, eax
+        mov     eax, DWORD PTR [rbp-4]
+        add     eax, edx
+        mov     DWORD PTR [rbp-4], eax
+        add     DWORD PTR [rbp-8], 1
+.L2:
+        mov     eax, DWORD PTR [rbp-8]
+        cmp     eax, DWORD PTR [rbp-12]
+        jl      .L3
+        mov     edx, DWORD PTR [rbp-4]
+        mov     rax, QWORD PTR [rbp-24]
+        mov     rsi, rax
+        mov     edi, OFFSET FLAT:.LC0
+        mov     eax, 0
+        call    printf
+        nop
+        leave
+        ret
+main:
+        push    rbp
+        mov     rbp, rsp
+        mov     edi, OFFSET FLAT:api
+        call    hash_from_string
+        mov     eax, 0
+        pop     rbp
+        ret
+
+*/
