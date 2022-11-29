@@ -12,6 +12,7 @@ int main(void)
 	float v1[] = {2,5,4};
 	float v2[] = {3,2,1};
 	float res[] = {0,0,0}; //initalize for length 
+	int length;
 	
 	
 	vector_add(v1,v2,res,3);
