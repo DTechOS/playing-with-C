@@ -1,0 +1,252 @@
+#include <stdio.h>
+//Basic vector addition in C
+// VECTOR ADDITION:
+// A = {1,2,3...}
+// B {3,4,5...}
+// A+B = {a1 + b1, a2 + b2, a3 + b3...}
+
+
+
+int main(void)
+{	
+	float v1[] = {2,5,4};
+	float v2[] = {3,2,1};
+	float res[] = {0,0,0}; //initalize for length 
+	
+	
+	vector_add(v1,v2,res,3);
+	for (int i = 0; i < 3; i++)
+	printf("result[%d]=%.2lf\n",i,res[i]);
+
+return 0; 	
+}
+
+void vector_add(float v1[], float v2[], float res[], int length)
+{
+	for (int i = 0; i < length; i++) 
+		res[i] = v1[i] + v2[i];
+		
+}
+
+
+------------------------------------------------------------------------------------------------
+// compiled using GCC dissassembly with objdump intel syntax
+// implicit declaration warnings 
+
+
+1139:       55                      push   rbp
+    113a:       48 89 e5                mov    rbp,rsp
+    113d:       48 83 ec 30             sub    rsp,0x30 // subtracts from rsp to make room on the stack
+    1141:       f3 0f 10 05 cf 0e 00    movss  xmm0,DWORD PTR [rip+0xecf]        # 2018 <_IO_stdin_used+0x18>
+    1148:       00 
+    1149:       f3 0f 11 45 f0          movss  DWORD PTR [rbp-0x10],xmm0
+    114e:       f3 0f 10 05 c6 0e 00    movss  xmm0,DWORD PTR [rip+0xec6]        # 201c <_IO_stdin_used+0x1c>
+    1155:       00 
+    1156:       f3 0f 11 45 f4          movss  DWORD PTR [rbp-0xc],xmm0
+    115b:       f3 0f 10 05 bd 0e 00    movss  xmm0,DWORD PTR [rip+0xebd]        # 2020 <_IO_stdin_used+0x20>
+    1162:       00 
+    1163:       f3 0f 11 45 f8          movss  DWORD PTR [rbp-0x8],xmm0
+    1168:       f3 0f 10 05 b4 0e 00    movss  xmm0,DWORD PTR [rip+0xeb4]        # 2024 <_IO_stdin_used+0x24>
+    116f:       00 
+    1170:       f3 0f 11 45 e4          movss  DWORD PTR [rbp-0x1c],xmm0
+    1175:       f3 0f 10 05 9b 0e 00    movss  xmm0,DWORD PTR [rip+0xe9b]        # 2018 <_IO_stdin_used+0x18>
+    117c:       00 
+    117d:       f3 0f 11 45 e8          movss  DWORD PTR [rbp-0x18],xmm0
+    1182:       f3 0f 10 05 9e 0e 00    movss  xmm0,DWORD PTR [rip+0xe9e]        # 2028 <_IO_stdin_used+0x28>
+    1189:       00 
+    118a:       f3 0f 11 45 ec          movss  DWORD PTR [rbp-0x14],xmm0
+    118f:       66 0f ef c0             pxor   xmm0,xmm0
+    1193:       f3 0f 11 45 d8          movss  DWORD PTR [rbp-0x28],xmm0
+    1198:       66 0f ef c0             pxor   xmm0,xmm0
+    119c:       f3 0f 11 45 dc          movss  DWORD PTR [rbp-0x24],xmm0
+    11a1:       66 0f ef c0             pxor   xmm0,xmm0
+    11a5:       f3 0f 11 45 e0          movss  DWORD PTR [rbp-0x20],xmm0
+    11aa:       48 8d 55 d8             lea    rdx,[rbp-0x28]
+    11ae:       48 8d 75 e4             lea    rsi,[rbp-0x1c]
+    11b2:       48 8d 45 f0             lea    rax,[rbp-0x10]
+    11b6:       b9 03 00 00 00          mov    ecx,0x3
+    11bb:       48 89 c7                mov    rdi,rax
+    11be:       b8 00 00 00 00          mov    eax,0x0
+    11c3:       e8 50 00 00 00          call   1218 <vector_add>
+    11c8:       c7 45 fc 00 00 00 00    mov    DWORD PTR [rbp-0x4],0x0
+    11cf:       eb 3a                   jmp    120b <main+0xd2>
+    11d1:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    11d4:       48 98                   cdqe
+    11d6:       f3 0f 10 44 85 d8       movss  xmm0,DWORD PTR [rbp+rax*4-0x28]
+    11dc:       66 0f ef c9             pxor   xmm1,xmm1
+    11e0:       f3 0f 5a c8             cvtss2sd xmm1,xmm0
+    11e4:       66 48 0f 7e ca          movq   rdx,xmm1
+    11e9:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    11ec:       66 48 0f 6e c2          movq   xmm0,rdx
+    11f1:       89 c6                   mov    esi,eax
+    11f3:       48 8d 05 0a 0e 00 00    lea    rax,[rip+0xe0a]        # 2004 <_IO_stdin_used+0x4>
+    11fa:       48 89 c7                mov    rdi,rax
+    11fd:       b8 01 00 00 00          mov    eax,0x1
+    1202:       e8 29 fe ff ff          call   1030 <printf@plt>
+    1207:       83 45 fc 01             add    DWORD PTR [rbp-0x4],0x1
+    120b:       83 7d fc 02             cmp    DWORD PTR [rbp-0x4],0x2
+    120f:       7e c0                   jle    11d1 <main+0x98>
+    1211:       b8 00 00 00 00          mov    eax,0x0
+    1216:       c9                      leave
+    1217:       c3                      ret
+
+0000000000001218 <vector_add>:
+    1218:       55                      push   rbp
+    1219:       48 89 e5                mov    rbp,rsp
+    121c:       48 89 7d e8             mov    QWORD PTR [rbp-0x18],rdi
+    1220:       48 89 75 e0             mov    QWORD PTR [rbp-0x20],rsi
+    1224:       48 89 55 d8             mov    QWORD PTR [rbp-0x28],rdx
+    1228:       89 4d d4                mov    DWORD PTR [rbp-0x2c],ecx
+    122b:       c7 45 fc 00 00 00 00    mov    DWORD PTR [rbp-0x4],0x0
+    1232:       eb 50                   jmp    1284 <vector_add+0x6c>
+    1234:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    1237:       48 98                   cdqe
+    1239:       48 8d 14 85 00 00 00    lea    rdx,[rax*4+0x0]
+    1240:       00 
+    1241:       48 8b 45 e8             mov    rax,QWORD PTR [rbp-0x18]
+    1245:       48 01 d0                add    rax,rdx
+    1248:       f3 0f 10 08             movss  xmm1,DWORD PTR [rax]
+    124c:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    124f:       48 98                   cdqe
+    1251:       48 8d 14 85 00 00 00    lea    rdx,[rax*4+0x0]
+    1258:       00 
+    1259:       48 8b 45 e0             mov    rax,QWORD PTR [rbp-0x20]
+    125d:       48 01 d0                add    rax,rdx
+    1260:       f3 0f 10 00             movss  xmm0,DWORD PTR [rax]
+    1264:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    1267:       48 98                   cdqe
+    1269:       48 8d 14 85 00 00 00    lea    rdx,[rax*4+0x0]
+    1270:       00 
+    1271:       48 8b 45 d8             mov    rax,QWORD PTR [rbp-0x28]
+    1275:       48 01 d0                add    rax,rdx
+    1278:       f3 0f 58 c1             addss  xmm0,xmm1
+    127c:       f3 0f 11 00             movss  DWORD PTR [rax],xmm0
+    1280:       83 45 fc 01             add    DWORD PTR [rbp-0x4],0x1
+    1284:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    1287:       3b 45 d4                cmp    eax,DWORD PTR [rbp-0x2c]
+    128a:       7c a8                   jl     1234 <vector_add+0x1c>
+    128c:       90                      nop
+    128d:       90                      nop
+    128e:       5d                      pop    rbp
+    128f:       c3                      ret
+---------------------------------------------------------------------------------------------------
+
+//without implicit declaration 
+
+#include <stdio.h>
+
+// VECTOR ADDITION:
+// A = {1,2,3...}
+// B {3,4,5...}
+// A+B = {a1 + b1, a2 + b2, a3 + b3...}
+float v1[] = {2,5,4};
+float v2[] = {3,2,1};
+float res[] = {0,0,0}; //initalize for length 
+
+
+void vector_add(float v1[], float v2[], float res[], int length)
+{
+	for (int i = 0; i < length; i++) 
+		res[i] = v1[i] + v2[i];
+		
+}
+
+
+int main(void)
+{	
+	
+	
+	
+	vector_add(v1,v2,res,3);
+	for (int i = 0; i < 3; i++)
+	printf("result[%d]=%.2lf\n",i,res[i]);
+
+return 0; 	
+}
+-------------------------------------------------------------------------------------------------
+
+0000000000001139 <vector_add>:
+    1139:       55                      push   rbp
+    113a:       48 89 e5                mov    rbp,rsp
+    113d:       48 89 7d e8             mov    QWORD PTR [rbp-0x18],rdi
+    1141:       48 89 75 e0             mov    QWORD PTR [rbp-0x20],rsi
+    1145:       48 89 55 d8             mov    QWORD PTR [rbp-0x28],rdx
+    1149:       89 4d d4                mov    DWORD PTR [rbp-0x2c],ecx
+    114c:       c7 45 fc 00 00 00 00    mov    DWORD PTR [rbp-0x4],0x0
+    1153:       eb 50                   jmp    11a5 <vector_add+0x6c>
+    1155:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    1158:       48 98                   cdqe
+    115a:       48 8d 14 85 00 00 00    lea    rdx,[rax*4+0x0]
+    1161:       00 
+    1162:       48 8b 45 e8             mov    rax,QWORD PTR [rbp-0x18]
+    1166:       48 01 d0                add    rax,rdx
+    1169:       f3 0f 10 08             movss  xmm1,DWORD PTR [rax]
+    116d:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    1170:       48 98                   cdqe
+    1172:       48 8d 14 85 00 00 00    lea    rdx,[rax*4+0x0]
+    1179:       00 
+    117a:       48 8b 45 e0             mov    rax,QWORD PTR [rbp-0x20]
+    117e:       48 01 d0                add    rax,rdx
+    1181:       f3 0f 10 00             movss  xmm0,DWORD PTR [rax]
+    1185:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    1188:       48 98                   cdqe
+    118a:       48 8d 14 85 00 00 00    lea    rdx,[rax*4+0x0]
+    1191:       00 
+    1192:       48 8b 45 d8             mov    rax,QWORD PTR [rbp-0x28]
+    1196:       48 01 d0                add    rax,rdx
+    1199:       f3 0f 58 c1             addss  xmm0,xmm1
+    119d:       f3 0f 11 00             movss  DWORD PTR [rax],xmm0
+    11a1:       83 45 fc 01             add    DWORD PTR [rbp-0x4],0x1
+    11a5:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    11a8:       3b 45 d4                cmp    eax,DWORD PTR [rbp-0x2c]
+    11ab:       7c a8                   jl     1155 <vector_add+0x1c>
+    11ad:       90                      nop
+    11ae:       90                      nop
+    11af:       5d                      pop    rbp
+    11b0:       c3                      ret
+
+00000000000011b1 <main>:
+    11b1:       55                      push   rbp
+    11b2:       48 89 e5                mov    rbp,rsp
+    11b5:       48 83 ec 10             sub    rsp,0x10
+    11b9:       b9 03 00 00 00          mov    ecx,0x3
+    11be:       48 8d 05 7b 2e 00 00    lea    rax,[rip+0x2e7b]        # 4040 <res>
+    11c5:       48 89 c2                mov    rdx,rax
+    11c8:       48 8d 05 59 2e 00 00    lea    rax,[rip+0x2e59]        # 4028 <v2>
+    11cf:       48 89 c6                mov    rsi,rax
+    11d2:       48 8d 05 3f 2e 00 00    lea    rax,[rip+0x2e3f]        # 4018 <v1>
+    11d9:       48 89 c7                mov    rdi,rax
+    11dc:       e8 58 ff ff ff          call   1139 <vector_add>
+    11e1:       c7 45 fc 00 00 00 00    mov    DWORD PTR [rbp-0x4],0x0
+    11e8:       eb 48                   jmp    1232 <main+0x81>
+    11ea:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    11ed:       48 98                   cdqe
+    11ef:       48 8d 14 85 00 00 00    lea    rdx,[rax*4+0x0]
+    11f6:       00 
+    11f7:       48 8d 05 42 2e 00 00    lea    rax,[rip+0x2e42]        # 4040 <res>
+    11fe:       f3 0f 10 04 02          movss  xmm0,DWORD PTR [rdx+rax*1]
+    1203:       66 0f ef c9             pxor   xmm1,xmm1
+    1207:       f3 0f 5a c8             cvtss2sd xmm1,xmm0
+    120b:       66 48 0f 7e ca          movq   rdx,xmm1
+    1210:       8b 45 fc                mov    eax,DWORD PTR [rbp-0x4]
+    1213:       66 48 0f 6e c2          movq   xmm0,rdx
+    1218:       89 c6                   mov    esi,eax
+    121a:       48 8d 05 e3 0d 00 00    lea    rax,[rip+0xde3]        # 2004 <_IO_stdin_used+0x4>
+    1221:       48 89 c7                mov    rdi,rax
+    1224:       b8 01 00 00 00          mov    eax,0x1
+    1229:       e8 02 fe ff ff          call   1030 <printf@plt>
+    122e:       83 45 fc 01             add    DWORD PTR [rbp-0x4],0x1
+    1232:       83 7d fc 02             cmp    DWORD PTR [rbp-0x4],0x2
+    1236:       7e b2                   jle    11ea <main+0x39>
+    1238:       b8 00 00 00 00          mov    eax,0x0
+    123d:       c9                      leave
+    123e:       c3                      ret
+----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
