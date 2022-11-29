@@ -5,26 +5,23 @@
 char api[] = "CreateThread"; // api name to hash
 
 
-void hash_from_string(char api[]) 
+void hash_from_string(char api[])
 {
-	int len = strlen(api);
-    unsigned int hash = 0x35; // random byte 
-	 
-	
-	for (int i = 0; i < len;i++) 
-	{
-		hash += (hash * 0xab10f29f + api[i]) & 0xffffff; //0xab10f29f = another random value, 0xffffff = masking
-	} 
-	printf("%s: 0x00%x\n", api, hash);
-	
-	
+    int len = strlen(api);
+    unsigned int hash = 0x35; // random byte
+
+
+    for (int i = 0; i < len; i++) {
+        hash += (hash * 0xab10f29f + api[i]) & 0xffffff; //0xab10f29f = another random value, 0xffffff = masking
+    }
+    printf("%s: 0x00%x\n", api, hash);
 }
 
-int main() 
+int main()
 {
-	hash_from_string(api);
-	
-	
+    hash_from_string(api);
+
+
 }
 
 /*
