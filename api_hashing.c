@@ -45,7 +45,7 @@ hash_from_string:
         jmp     .L2
 .L3:
         mov     eax, DWORD PTR [rbp-4]
-        imul    edx, eax, -1424952673
+        imul    edx, eax, -1424952673 // useful to recognize this in a malware sample
         mov     eax, DWORD PTR [rbp-8]
         movsx   rcx, eax
         mov     rax, QWORD PTR [rbp-24]
