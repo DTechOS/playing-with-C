@@ -2,18 +2,18 @@
 #include <string.h>
 // this is really not effective and causes hash collions very easily, just learning for malware
 
-char api[] = "CreateThread";
+char api[] = "CreateThread"; // api name to hash
 
 
 void hash_from_string(char api[]) 
 {
 	int len = strlen(api);
-    unsigned int hash = 0x35;
+    unsigned int hash = 0x35; // random byte 
 	 
 	
 	for (int i = 0; i < len;i++) 
 	{
-		hash += (hash * 0xab10f29f + api[i]) & 0xffffff;
+		hash += (hash * 0xab10f29f + api[i]) & 0xffffff; //0xab10f29f = another random value, 0xffffff = masking
 	} 
 	printf("%s: 0x00%x\n", api, hash);
 	
